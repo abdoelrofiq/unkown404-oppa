@@ -1,0 +1,1 @@
+query builder for paginator when using Oracle as database and that's for organizational purposes only

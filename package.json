@@ -1,0 +1,20 @@
+{
+  "name": "@unkown404/oppa",
+  "version": "1.0.1",
+  "description": "query builder for paginator when using Oracle as database and that's for organizational purposes only",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "query",
+    "builder",
+    "for",
+    "paginator"
+  ],
+  "author": "Abdul Rofiq",
+  "license": "ISC",
+  "dependencies": {
+    "lodash": "^4.17.21"
+  }
+}
