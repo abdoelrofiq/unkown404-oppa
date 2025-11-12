@@ -3,6 +3,7 @@ const _ = require("lodash");
 class Pagination {
   sortQuery = "";
   orFinalStatement = "";
+  groupQuery = "";
 
   constructor(oraexec = null, query = null) {
     this.oraexec = oraexec;
@@ -63,7 +64,7 @@ class Pagination {
     this.query = this.query.split(/\s+/).join(" ");
 
     const fullQuery =
-      this.query + this.orFinalStatement + this.sortQuery + offsetQuery;
+      this.query + this.orFinalStatement + this.groupQuery + this.sortQuery + offsetQuery;
 
     return fullQuery;
   };
@@ -71,6 +72,10 @@ class Pagination {
   sortQueryBuilder = (sortField, direction) => {
     this.sortQuery = ` ORDER BY ${sortField} ${direction}`;
   };
+
+  groupByQueryBuilder = (field) => {
+    this.groupQuery = ` GROUP BY ${field}`
+  }
 
   customFilterQueryBuilder = (req) => {
     const param = req?.query?.param ?? "";
