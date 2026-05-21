@@ -41,9 +41,9 @@ class Pagination {
    * @returns {string} Complete SQL query string dedicated to fetching the total row count.
    */
   countQueryBuilder = () => {
-    const baseQuery = this._getCleanedQuery().replace(/;$/, "");
+    const baseQuery = this._getCleanedQuery().replace(/;$/, "") + this.groupQuery;
 
-    let queryWithFilter = baseQuery + this.groupQuery;
+    let queryWithFilter = baseQuery;
     if (this.orFinalStatement.length > 0) {
       queryWithFilter = `SELECT * FROM (${baseQuery}) src_f WHERE ${this.orFinalStatement}`;
     }
