@@ -1,7 +1,7 @@
 {
   "name": "@unkown404/oppa",
   "version": "1.0.3",
-  "description": "query builder for paginator when using Oracle as database and that's for organizational purposes only",
+  "description": "This query builder handles Oracle database pagination exclusively for internal organizational needs.",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
