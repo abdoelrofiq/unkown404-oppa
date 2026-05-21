@@ -1,7 +1,7 @@
 const _ = require("lodash");
 
 /**
- * Class to handle data pagination, sorting, grouping, 
+ * Class to handle data pagination, sorting, grouping,
  * and dynamic filter clause generation safely for Oracle DB.
  */
 class Pagination {
@@ -43,7 +43,7 @@ class Pagination {
   countQueryBuilder = () => {
     const baseQuery = this._getCleanedQuery().replace(/;$/, "");
 
-    let queryWithFilter = baseQuery;
+    let queryWithFilter = baseQuery + this.groupQuery;
     if (this.orFinalStatement.length > 0) {
       queryWithFilter = `SELECT * FROM (${baseQuery}) src_f WHERE ${this.orFinalStatement}`;
     }
@@ -74,7 +74,7 @@ class Pagination {
   };
 
   /**
-   * Builds the final paginated SQL query combining filters, groupings, sorting, 
+   * Builds the final paginated SQL query combining filters, groupings, sorting,
    * and Oracle-specific OFFSET/FETCH clauses.
    * @param {number} page - Current page number (1-indexed).
    * @param {number} rowPerPage - Number of data rows per page.
@@ -126,6 +126,10 @@ class Pagination {
    */
   customFilterQueryBuilder = (req, onlyField = null, exceptFields = null, casesensitive = true) => {
     let param = req?.query?.param ?? "";
+    if (!param) {
+      this.orFinalStatement = ''
+      return;
+    }
     if (!casesensitive) {
       param = param.toLowerCase();
     }
