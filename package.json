@@ -1,6 +1,6 @@
 {
   "name": "@unkown404/oppa",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "query builder for paginator when using Oracle as database and that's for organizational purposes only",
   "main": "index.js",
   "scripts": {
